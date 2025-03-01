@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selector</title>
+    <meta name="google" content="notranslate" />
+    <link rel="shortcut icon" href="assets/favicon.webp" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form>
+      <select name="" id="select1" onchange="upgradeSelect2()">
+        <option value="" selected disabled>Banda</option>
+        <option value="Led Zeppelin">Led Zeppelin</option>
+        <option value="Queen">Queen</option>
+        <option value="Pink Floyd">Pink Floyd</option>
+        <option value="The Beatles">The Beatles</option>
+        <option value="The Rolling Stones">The Rolling Stones</option>
+      </select>
+
+      <select name="" id="select2">
+        <option value="" selected disabled>Cancion</option>
+      </select>
+    </form>
+
+    <script>
+      const bandasDeRock = {
+        'Led Zeppelin': [
+          'Stairway to Heaven',
+          'Whole Lotta Love',
+          'Kashmir',
+          'Immigrant Song',
+          'Black Dog'
+        ],
+        Queen: [
+          'Bohemian Rhapsody',
+          'We Will Rock You',
+          'Another One Bites the Dust',
+          'Under Pressure',
+          'Somebody to Love'
+        ],
+        'Pink Floyd': [
+          'Comfortably Numb',
+          'Wish You Were Here',
+          'Time',
+          'Money',
+          'Another Brick in the Wall'
+        ],
+        'The Beatles': [
+          'Hey Jude',
+          'Let It Be',
+          'Yesterday',
+          'Come Together',
+          'A Day in the Life'
+        ],
+        'The Rolling Stones': [
+          'Paint It Black',
+          'Satisfaction',
+          'Sympathy for the Devil',
+          'Gimme Shelter',
+          "Jumpin' Jack Flash"
+        ]
+      };
+
+      function upgradeSelect2() {
+        let $select1 = document.getElementById('select1'),
+          $select2 = document.getElementById('select2'),
+          $seleccionado1 = $select1.options[$select1.selectedIndex].value;
+
+        while ($select2.options.length > 0) {
+          $select2.options.remove(0);
+        }
+
+        let arrayCanciones = bandasDeRock[$seleccionado1],
+          i;
+        for (i = 0; i < arrayCanciones.length; i++) {
+          let cancion = new Option(arrayCanciones[i], arrayCanciones[i]);
+          $select2.add(cancion);
+        }
+      }
+    </script>
+  </body>
+</html>
